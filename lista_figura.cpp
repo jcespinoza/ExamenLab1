@@ -1,22 +1,22 @@
 #include "lista_figura.h"
 #include <QDebug>
 
-lista_figura::lista_figura()
+Lista::Lista()
 {
     inicio=final=actual=0;
     cuantos=0;
 }
 
-void lista_figura::ir_a_inicio()
+void Lista::ir_a_inicio()
 { this->actual = this->inicio; }
-void lista_figura::ir_a_final()
+void Lista::ir_a_final()
 { this->actual = this->final; }
-void lista_figura::siguiente()
+void Lista::siguiente()
 { this->actual = this->actual->siguiente; }
-void lista_figura::anterior()
+void Lista::anterior()
 { this->actual = this->actual->anterior; }
 
-Figura* lista_figura::recuperar()
+Figura* Lista::recuperar()
 {
     if(actual!=0)
          return actual->Fig;
@@ -24,7 +24,7 @@ Figura* lista_figura::recuperar()
         return 0;
 }
 
-Figura* lista_figura::recuperar(int pos)
+Figura* Lista::recuperar(int pos)
 {
     if(cuantos==0 || pos>cuantos || pos <=0)
         return 0;
@@ -42,11 +42,11 @@ Figura* lista_figura::recuperar(int pos)
     }
 }
 
-int lista_figura::getCuantos()
+int Lista::getCuantos()
 {
     return cuantos;
 }
-void lista_figura::agregar(Figura *F)
+void Lista::agregar(Figura *F)
 {
     nodo_figura *nuevo;
     nuevo = new nodo_figura(F);
@@ -66,10 +66,10 @@ void lista_figura::agregar(Figura *F)
 
 }
 
-lista_figura::~lista_figura(){
+Lista::~Lista(){
    this->limpiar();
 }
-void lista_figura::limpiar(){
+void Lista::limpiar(){
    //this->limpiar_recursivamente(this->inicio);
    this->actual = this->inicio;
    while(this->actual!=0)
@@ -85,7 +85,7 @@ void lista_figura::limpiar(){
    this->cuantos =0;
 }
 
-void lista_figura::limpiar_recursivamente(nodo_figura *n)
+void Lista::limpiar_recursivamente(nodo_figura *n)
 {
     if (n==0)  return;
     else
@@ -95,8 +95,8 @@ void lista_figura::limpiar_recursivamente(nodo_figura *n)
     }
 }
 
-//lista_figura es 1-based
-Figura * lista_figura::remover(int pos){
+//Lista es 1-based
+Figura * Lista::remover(int pos){
     Figura * fig = 0;
     ir_a_inicio();
     for(int i = 1; i < pos; i++)
@@ -122,11 +122,11 @@ Figura * lista_figura::remover(int pos){
     return fig;
 }
 
-bool lista_figura::vacia(){
+bool Lista::vacia(){
     return inicio == 0 || cuantos == 0;
 }
 
-void lista_figura::irA(int p){
+void Lista::irA(int p){
     if(p <= 1){
         ir_a_inicio(); return;
     }
@@ -140,7 +140,7 @@ void lista_figura::irA(int p){
     }
 }
 
-void lista_figura::insertar(int pos, Figura * f){
+void Lista::insertar(int pos, Figura * f){
     if(pos >= 1){
         if(vacia() || cuantos <= pos){
             agregar(f);

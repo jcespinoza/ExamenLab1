@@ -16,7 +16,7 @@ class PaintBoard : public QWidget
 public:
     PaintBoard(QWidget *parent = 0);
 
-    void setListaFiguras ( lista_figura *l);
+    void setListaFiguras ( Lista *l);
     int getCurrentFigura() { return this->currentFigura;}
     void guardar(QString f){pix->save(f);}
 
@@ -25,7 +25,7 @@ signals:
 
 private:
      float distancia(int x, int y, int x1, int y1);
-     lista_figura *lista;
+     Lista *lista;
      int currentFigura; // Marca la posicion de la figura actual
      QImage image;
      QPixmap * pix;

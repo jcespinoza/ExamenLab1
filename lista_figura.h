@@ -15,10 +15,10 @@ class nodo_figura
         Fig=0;
     }
 };
-class lista_figura
+class Lista
 {
 public:
-    lista_figura();
+    Lista();
     void ir_a_inicio();
     void ir_a_final();
     void siguiente();
@@ -31,7 +31,7 @@ public:
     bool vacia();
     void irA(int);
     void insertar(int, Figura *);
-    ~lista_figura();
+    ~Lista();
     Figura* remover(int pos);
     void printList(){
         irA(0);

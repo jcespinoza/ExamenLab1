@@ -84,7 +84,7 @@ void PaintBoard::paintEvent( QPaintEvent * event ){
    }
 }
 
-void PaintBoard::setListaFiguras(lista_figura *l)
+void PaintBoard::setListaFiguras(Lista *l)
 {
     this->lista = l;
 }
