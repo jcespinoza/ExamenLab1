@@ -64,9 +64,6 @@ void PaintBoard::paintEvent( QPaintEvent * event ){
          temp->Dibujar(&painter2);
          lista->siguiente();
        }
-
-       QPainter painter(this);
-       painter.drawPixmap(0,0, *pix);
        /*qDebug()<<"CurrentFigura " << this->currentFigura << "cuantos :"
                 << this->lista->getCuantos();
 
@@ -82,6 +79,8 @@ void PaintBoard::paintEvent( QPaintEvent * event ){
            painter.drawLine(0,0,temp->getX(),temp->getY());
        }*/
    }
+   QPainter painter(this);
+   painter.drawPixmap(0,0, *pix);
 }
 
 void PaintBoard::setListaFiguras(Lista *l)

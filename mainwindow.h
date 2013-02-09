@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include "paintboard.h"
+#include "lista_figura.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,6 +20,8 @@ public:
     
 private:
     Ui::MainWindow *ui;
+    PaintBoard * board;
+    void init();
 };
 
 #endif // MAINWINDOW_H
