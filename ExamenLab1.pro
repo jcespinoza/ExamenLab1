@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     paintboard.cpp \
     lista_figura.cpp \
     figura.cpp \
-    circulo.cpp
+    circulo.cpp \
+    imagen.cpp
 
 HEADERS  += mainwindow.h \
     rectangulosombreado.h \
