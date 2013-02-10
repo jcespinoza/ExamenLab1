@@ -5,10 +5,10 @@ Rectangulo::Rectangulo():Figura() // Se corre el constructor de Figura primero
   this->alto = 10;
   this->ancho = 10;
 }
-Rectangulo::Rectangulo(int x,int y,int w,int h,
+Rectangulo::Rectangulo(int x,int y, int z, int w,int h,
                        QColor color,
                        QColor fondo)
-:Figura(x,y,color,fondo) // Correr el constructor padre de Figura
+:Figura(x,y,z, color,fondo) // Correr el constructor padre de Figura
 {
    this->alto = h;
    this->ancho =w;

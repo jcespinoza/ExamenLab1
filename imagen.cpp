@@ -5,7 +5,7 @@ Imagen::Imagen():Figura(){
     wScale=hScale=0;
 }
 
-Imagen::Imagen(QString file, int x=0, int y=0, int w=0, int h=0):Figura(x, y, Qt::black, Qt::white){
+Imagen::Imagen(QString file, int x=0, int y=0, int z=0, int w=0, int h=0):Figura(x, y, z, Qt::black, Qt::white){
     setImage(file);
     wScale = w;
     hScale = h;

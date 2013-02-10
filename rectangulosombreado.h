@@ -6,7 +6,7 @@ class RectanguloSombreado : public Rectangulo
 {
 public:
     RectanguloSombreado();
-    RectanguloSombreado (int x, int y, int w, int h,
+    RectanguloSombreado (int x, int y, int z, int w, int h,
                 QColor color,
                 QColor fondo,int grosor);
     virtual void Dibujar (QPainter *AreaPintado);

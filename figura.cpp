@@ -2,15 +2,16 @@
 
 Figura::Figura()
 {
-    x = y = 0;
+    x = y = z = 0;
     color = Qt::black;
     fondo = Qt::white;
     nombre = "Figura";
 }
-Figura::Figura(int x, int y, QColor color, QColor fondo)
+Figura::Figura(int x, int y, int z, QColor color, QColor fondo)
 {
     this->x =x;
     this->y = y;
+    this->z = z;
     this->color = color;
     this->fondo = fondo;
 }

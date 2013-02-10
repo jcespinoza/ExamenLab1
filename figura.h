@@ -6,7 +6,7 @@ class Figura
 {
 public:
     Figura();
-    Figura(int x, int y, QColor color, QColor fondo);
+    Figura(int x, int y, int z, QColor color, QColor fondo);
 
     virtual void Dibujar (QPainter *painter) = 0;
     virtual char tipoFigura() = 0;

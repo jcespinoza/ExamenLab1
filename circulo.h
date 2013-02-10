@@ -7,7 +7,7 @@ class Circulo : public Figura
     static const double pi;
 public:
   Circulo();
-  Circulo(int x, int y, float r,
+  Circulo(int x, int y,  int z, float r,
     QColor color, QColor fondo);
 
     virtual void Dibujar(QPainter *AreaPintado);

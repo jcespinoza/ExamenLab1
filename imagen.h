@@ -9,7 +9,7 @@ class Imagen: public Figura{
 
 public:
     Imagen();
-    Imagen(QString, int, int, int, int);
+    Imagen(QString, int, int, int, int, int);
     void setImage(QString);
     void setImage(QPixmap);
     QPixmap getImage() const{return imagen;}

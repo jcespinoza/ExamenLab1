@@ -6,7 +6,7 @@ class Rectangulo : public Figura // Herencia publica , Why?
 {
 public:
     Rectangulo();
-    Rectangulo (int x, int y, int w, int h,
+    Rectangulo (int x, int y, int z, int w, int h,
                 QColor color,
                 QColor fondo);
 

@@ -5,10 +5,10 @@ RectanguloSombreado::RectanguloSombreado():Rectangulo()
     this->grosor_sombra=5;
 }
 
-RectanguloSombreado::RectanguloSombreado(int x, int y, int w, int h,
+RectanguloSombreado::RectanguloSombreado(int x, int y, int z, int w, int h,
                                          QColor color,
                                          QColor fondo,int grosor):
-Rectangulo(x,y,w,h,color,fondo)
+Rectangulo(x,y, z, w,h,color,fondo)
 
 {
   this->grosor_sombra = grosor;

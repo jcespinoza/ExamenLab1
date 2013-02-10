@@ -5,8 +5,8 @@ Circulo::Circulo() :Figura()
 {
     this->radio=10;
 }
-Circulo::Circulo(int x, int y, float r, QColor color, QColor fondo)
-:Figura(x,y,color,fondo)
+Circulo::Circulo(int x, int y, int z, float r, QColor color, QColor fondo)
+:Figura(x,y,z,color,fondo)
 {
     this->radio =r;
 }

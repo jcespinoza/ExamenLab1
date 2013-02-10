@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     lista_figura.cpp \
     figura.cpp \
     circulo.cpp \
-    imagen.cpp
+    imagen.cpp \
+    texto.cpp
 
 HEADERS  += mainwindow.h \
     rectangulosombreado.h \
@@ -29,7 +30,8 @@ HEADERS  += mainwindow.h \
     lista_figura.h \
     figura.h \
     circulo.h \
-    imagen.h
+    imagen.h \
+    texto.h
 
 FORMS    += mainwindow.ui
 
