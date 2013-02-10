@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>828</width>
-    <height>485</height>
+    <width>892</width>
+    <height>542</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,17 +21,17 @@
    <widget class="QToolBox" name="toolBox">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>0</y>
       <width>151</width>
-      <height>341</height>
+      <height>391</height>
      </rect>
     </property>
     <property name="toolTip">
      <string>Ojos</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="pgEyes">
      <property name="geometry">
@@ -39,7 +39,7 @@
        <x>0</x>
        <y>0</y>
        <width>151</width>
-       <height>206</height>
+       <height>256</height>
       </rect>
      </property>
      <attribute name="label">
@@ -52,7 +52,7 @@
        <x>0</x>
        <y>0</y>
        <width>151</width>
-       <height>206</height>
+       <height>256</height>
       </rect>
      </property>
      <attribute name="label">
@@ -60,16 +60,40 @@
      </attribute>
     </widget>
     <widget class="QWidget" name="pgMouth">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>151</width>
+       <height>256</height>
+      </rect>
+     </property>
      <attribute name="label">
       <string>Bocas</string>
      </attribute>
     </widget>
     <widget class="QWidget" name="pgEars">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>151</width>
+       <height>256</height>
+      </rect>
+     </property>
      <attribute name="label">
       <string>Orejas</string>
      </attribute>
     </widget>
     <widget class="QWidget" name="pgHair">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>151</width>
+       <height>256</height>
+      </rect>
+     </property>
      <attribute name="label">
       <string>Cabello</string>
      </attribute>
@@ -79,9 +103,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>350</y>
+      <y>400</y>
       <width>141</width>
-      <height>111</height>
+      <height>121</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -107,13 +131,25 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QSpinBox" name="spPosx"/>
+      <widget class="QSpinBox" name="spPosx">
+       <property name="maximum">
+        <number>600</number>
+       </property>
+      </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QSpinBox" name="spPosy"/>
+      <widget class="QSpinBox" name="spPosy">
+       <property name="maximum">
+        <number>600</number>
+       </property>
+      </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QSpinBox" name="soPosz"/>
+      <widget class="QSpinBox" name="soPosz">
+       <property name="maximum">
+        <number>10</number>
+       </property>
+      </widget>
      </item>
      <item row="3" column="1">
       <widget class="QPushButton" name="pbAdd">
@@ -127,10 +163,10 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>0</y>
-      <width>541</width>
-      <height>461</height>
+      <x>170</x>
+      <y>20</y>
+      <width>551</width>
+      <height>491</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="grid"/>
@@ -138,10 +174,10 @@
    <widget class="QListWidget" name="lwObjects">
     <property name="geometry">
      <rect>
-      <x>710</x>
+      <x>730</x>
       <y>30</y>
-      <width>121</width>
-      <height>431</height>
+      <width>151</width>
+      <height>471</height>
      </rect>
     </property>
    </widget>
@@ -167,7 +203,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>828</width>
+     <width>892</width>
      <height>21</height>
     </rect>
    </property>

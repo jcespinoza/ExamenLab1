@@ -17,6 +17,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::init(){
     board = new PaintBoard();
+    lista = new Lista();
+    board->setListaFiguras(lista);
     ui->grid->addWidget(board);
-    qDebug() << "Added the paintboard";
 }

@@ -21,6 +21,7 @@ public:
 private:
     Ui::MainWindow *ui;
     PaintBoard * board;
+    Lista *lista;
     void init();
 };
 

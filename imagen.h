@@ -11,9 +11,13 @@ public:
     Imagen();
     Imagen(QString, int, int);
     void setImage(QString);
+    QImage getImage() const{return imagen;}
+    QString getPath() const{return imgPath;}
     virtual void Dibujar(QPainter *painter);
+    ~Imagen();
 private:
     QPixmap imagen;
+    QString imgPath;
 protected:
 };
 

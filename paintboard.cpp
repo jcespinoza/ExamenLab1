@@ -25,7 +25,6 @@ void PaintBoard::mouseDoubleClickEvent ( QMouseEvent * event )
           // Sacar la distancia entre los dos puntos y ver que tan cerca
           float dist = this->distancia(temp->getX(),temp->getY(),
                                        event->x(),event->y());
-
           //qDebug() << "Distancia : " << dist;
           if (dist<3) // Hardcoded
           {
@@ -35,9 +34,7 @@ void PaintBoard::mouseDoubleClickEvent ( QMouseEvent * event )
                emit this->currentFiguraChanged(this->currentFigura);
                return;
           }
-
           lista->siguiente();
-
         }
         this->currentFigura=0;
         this->update();
@@ -48,11 +45,6 @@ void PaintBoard::mouseDoubleClickEvent ( QMouseEvent * event )
 }
 
 void PaintBoard::paintEvent( QPaintEvent * event ){
-    //QPainter painter( this ); // Inicializar el Painter
-    // Dibujar el tablero primero SIEMPRE
-   /*painter.setBrush(Qt::white);
-   painter.drawRect(0,0,this->geometry().width()-1,this->geometry().height()-1);*/
-
     pix->fill(Qt::white);
     QPainter painter2(pix);
    if(lista!=0){ // Si el apuntador de lista es diferente de nulo
