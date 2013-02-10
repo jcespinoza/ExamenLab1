@@ -95,6 +95,16 @@ void Lista::limpiar_recursivamente(nodo_figura *n)
     }
 }
 
+void Lista::printList(){
+    irA(0);
+    int i = 1;
+    while(actual!=0){
+        qDebug() << i << ": " << actual->Fig->tipoFigura();
+        actual = actual->siguiente;
+        i++;
+    }
+}
+
 //Lista es 1-based
 Figura * Lista::remover(int pos){
     Figura * fig = 0;

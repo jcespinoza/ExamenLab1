@@ -34,6 +34,7 @@ void MainWindow::init(){
     connect(ui->spPosx, SIGNAL(valueChanged(int)), this, SLOT(setX(int)));
     connect(ui->spPosy, SIGNAL(valueChanged(int)), this, SLOT(setY(int)));
     connect(ui->spPosz, SIGNAL(valueChanged(int)), this, SLOT(setZ(int)));
+    connect(board, SIGNAL(listChanged()), this, SLOT(updateListWidget()));
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -46,6 +47,7 @@ void MainWindow::on_actionOpen_triggered()
         QPixmap pix(file);
         i->setImage(pix.scaled(640, 480, Qt::KeepAspectRatio));
         i->setXYZ(actualX,actualY,actualZ);
+        i->setNombre("Imagen Cargada");
         lista->insertar(actualZ, i);
         board->update();
     }
@@ -57,4 +59,11 @@ void MainWindow::on_actionSaveAs_triggered()
                                                 ".","PNG (*.png);; JPG (*.jpg);; GIF (*.gif);; BMP (*.bmp)");
     if(!file.isEmpty())
         board->guardar(file);
+}
+
+void MainWindow::updateListWidget(){
+    lista->ir_a_inicio();
+    for(int i = 1; i < lista->getCuantos(); i++){
+        Figura * f = lista->recuperar();
+    }
 }

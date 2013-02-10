@@ -12,11 +12,13 @@ public:
     virtual char tipoFigura() = 0;
     virtual double area() = 0;
 
+    virtual void setNombre(QString);
     virtual void setX(int newx);  // Por ejemplo este no valida negativos
     virtual void setY(int newy);  // Se puede sobre escribir por las clases derivadas
     virtual void setZ(int newz);  // Y llamar a la clase base
     virtual void setXYZ(int, int, int);
     // Metodos publicos NO virtuales
+    QString getNombre() const{return nombre;}
     int getX() const;
     int getY() const;
     int getZ() const{return z;}
@@ -29,6 +31,7 @@ protected:
  private:
     int x,y,z;
     QColor color,fondo;
+    QString nombre;
 };
 
 #endif // FIGURA_H

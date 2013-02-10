@@ -33,16 +33,7 @@ public:
     void insertar(int, Figura *);
     ~Lista();
     Figura* remover(int pos);
-    void printList(){
-        irA(0);
-        int i = 1;
-        while(actual!=0){
-            qDebug() << i << ": " << actual->Fig->tipoFigura();
-            actual = actual->siguiente;
-            i++;
-        }
-    }
-
+    void printList();
 private:
      nodo_figura *inicio;
      nodo_figura *final;
@@ -52,13 +43,3 @@ private:
 };
 
 #endif // LISTA_FIGURA_H
-
-
-
-
-
-
-
-
-
-

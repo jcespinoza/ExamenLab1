@@ -24,6 +24,7 @@ private slots:
     void setX(int x){actualX = x;}
     void setY(int y){actualY = y;}
     void setZ(int z){actualZ = z;}
+    void updateListWidget();
 
 private:
     Ui::MainWindow *ui;

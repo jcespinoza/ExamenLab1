@@ -2,9 +2,10 @@
 
 Figura::Figura()
 {
-    x=y=0;
-    color=Qt::black;
-    fondo=Qt::white;
+    x = y = 0;
+    color = Qt::black;
+    fondo = Qt::white;
+    nombre = "Figura";
 }
 Figura::Figura(int x, int y, QColor color, QColor fondo)
 {
@@ -61,4 +62,6 @@ QColor Figura::getFondo() const
   return this->fondo;
 }
 
-
+void Figura::setNombre(QString s){
+    nombre = s;
+}
