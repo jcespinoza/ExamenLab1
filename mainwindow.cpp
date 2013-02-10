@@ -16,12 +16,17 @@ MainWindow::~MainWindow()
 {
     delete ui;
     delete board;
-    delete lista;
+    delete lista, ojos, bocas, narices, orejas, pelos;
 }
 
 void MainWindow::init(){
     board = new PaintBoard();
     lista = new Lista();
+    bocas = new Lista();
+    orejas = new Lista();
+    narices = new Lista();
+    pelos = new Lista();
+    ojos = new Lista();
     board->setListaFiguras(lista);
     ui->grid->addWidget(board);
     actualX = actualY = 0;

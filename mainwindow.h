@@ -33,6 +33,12 @@ private:
     int actualY;
     int actualZ;
     void init();
+    Lista* bocas;
+    Lista* ojos;
+    Lista* narices;
+    Lista* pelos;
+    Lista* cicatrices;
+    Lista* orejas;
 };
 
 #endif // MAINWINDOW_H
