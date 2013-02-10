@@ -2,5 +2,36 @@
     <qresource prefix="/icon">
         <file>res/jcicon2.ico</file>
     </qresource>
-    <qresource prefix="/img"/>
+    <qresource prefix="/mouth">
+        <file>res/zombie/mouth1.png</file>
+        <file>res/zombie/mouth2.png</file>
+        <file>res/zombie/mouth3.png</file>
+        <file>res/zombie/mouth4.png</file>
+        <file>res/zombie/mouth5.png</file>
+        <file>res/zombie/mouth6.png</file>
+    </qresource>
+    <qresource prefix="/nose">
+        <file>res/zombie/nose1.png</file>
+        <file>res/zombie/nose2.png</file>
+        <file>res/zombie/nose3.png</file>
+        <file>res/zombie/nose4.png</file>
+        <file>res/zombie/nose5.png</file>
+    </qresource>
+    <qresource prefix="/eye">
+        <file>res/zombie/eyes1.png</file>
+        <file>res/zombie/eyes2.png</file>
+        <file>res/zombie/eyes3.png</file>
+        <file>res/zombie/eyes4.png</file>
+    </qresource>
+    <qresource prefix="/ear">
+        <file>res/zombie/ears1.png</file>
+        <file>res/zombie/ears2.png</file>
+        <file>res/zombie/ears3.png</file>
+    </qresource>
+    <qresource prefix="/hair">
+        <file>res/zombie/hair1.png</file>
+        <file>res/zombie/hair2.png</file>
+        <file>res/zombie/hair3.png</file>
+        <file>res/zombie/hair4.png</file>
+    </qresource>
 </RCC>
