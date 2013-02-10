@@ -5,7 +5,7 @@ PaintBoard::PaintBoard(QWidget *parent): QWidget(parent)
    this->lista =0;
    this->currentFigura = 0; // Valida es de 0 en adelante
 
-    pix = new QPixmap(geometry().width() -1, geometry().height() - 1);
+    pix = new QPixmap(geometry().width(), geometry().height());
 }
 
 float PaintBoard::distancia(int x, int y, int x1, int y1){

@@ -14,10 +14,12 @@ public:
 
     virtual void setX(int newx);  // Por ejemplo este no valida negativos
     virtual void setY(int newy);  // Se puede sobre escribir por las clases derivadas
-                                  // Y llamar a la clase base
+    virtual void setZ(int newz);  // Y llamar a la clase base
+    virtual void setXYZ(int, int, int);
     // Metodos publicos NO virtuales
-    int getX() const ;
+    int getX() const;
     int getY() const;
+    int getZ() const{return z;}
     void setColor(QColor color);
     void setFondo(QColor fondo);
     QColor getColor() const;
@@ -25,7 +27,7 @@ public:
 protected:
     virtual void Mover (int newx, int newy);  // PAra explicar lo de protected
  private:
-    int x,y;
+    int x,y,z;
     QColor color,fondo;
 };
 

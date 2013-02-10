@@ -37,7 +37,7 @@ public:
         irA(0);
         int i = 1;
         while(actual!=0){
-            qDebug() << i << ": " << actual;
+            qDebug() << i << ": " << actual->Fig->tipoFigura();
             actual = actual->siguiente;
             i++;
         }

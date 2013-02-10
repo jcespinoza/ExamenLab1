@@ -26,6 +26,16 @@ void Figura::setY(int newy)
 {
     this->y=newy;
 }
+void Figura::setZ(int newz)
+{
+    this->z=newz;
+}
+void Figura::setXYZ(int xx, int yy, int zz){
+    x = xx;
+    y = yy;
+    z = zz;
+}
+
 int Figura::getX() const
 {
     return x;

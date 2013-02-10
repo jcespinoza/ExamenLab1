@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>892</width>
+    <width>977</width>
     <height>542</height>
    </rect>
   </property>
@@ -31,7 +31,7 @@
      <string>Ojos</string>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="pgEyes">
      <property name="geometry">
@@ -145,7 +145,10 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QSpinBox" name="soPosz">
+      <widget class="QSpinBox" name="spPosz">
+       <property name="minimum">
+        <number>1</number>
+       </property>
        <property name="maximum">
         <number>10</number>
        </property>
@@ -165,7 +168,7 @@
      <rect>
       <x>170</x>
       <y>20</y>
-      <width>551</width>
+      <width>641</width>
       <height>491</height>
      </rect>
     </property>
@@ -174,7 +177,7 @@
    <widget class="QListWidget" name="lwObjects">
     <property name="geometry">
      <rect>
-      <x>730</x>
+      <x>820</x>
       <y>30</y>
       <width>151</width>
       <height>471</height>
@@ -184,8 +187,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>9</y>
+      <x>840</x>
+      <y>0</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -203,7 +206,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>892</width>
+     <width>977</width>
      <height>21</height>
     </rect>
    </property>

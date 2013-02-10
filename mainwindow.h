@@ -18,10 +18,20 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     
+private slots:
+    void on_actionOpen_triggered();
+    void on_actionSaveAs_triggered();
+    void setX(int x){actualX = x;}
+    void setY(int y){actualY = y;}
+    void setZ(int z){actualZ = z;}
+
 private:
     Ui::MainWindow *ui;
     PaintBoard * board;
     Lista *lista;
+    int actualX;
+    int actualY;
+    int actualZ;
     void init();
 };
 
