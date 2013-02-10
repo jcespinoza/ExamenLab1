@@ -1,4 +1,5 @@
 #include "imagen.h"
+#include <QDebug>
 
 Imagen::Imagen():Figura(){
     wScale=hScale=0;
@@ -28,4 +29,17 @@ char Imagen::tipoFigura(){
 
 void Imagen::setImage(QPixmap img){
     imagen = img;
+    wScale = img.width();
+    hScale = img.height();
+    qDebug() << "width" << img.width();
+}
+
+void Imagen::setH(int h){
+    if(h > 0)
+        hScale = h;
+}
+
+void Imagen::setW(int w){
+    if(w > 0)
+        wScale = w;
 }

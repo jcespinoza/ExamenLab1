@@ -17,6 +17,10 @@ public:
     virtual void Dibujar(QPainter *painter);
     virtual char tipoFigura();
     virtual double area(){return 0;}
+    void setW(int);
+    void setH(int);
+    int getW() const{return wScale;}
+    int getH() const{return hScale;}
 
     ~Imagen();
 private:

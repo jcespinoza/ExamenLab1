@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QListWidgetItem>
 #include <QDebug>
 #include "paintboard.h"
 #include "lista_figura.h"
@@ -25,6 +26,7 @@ private slots:
     void setY(int y){actualY = y;}
     void setZ(int z){actualZ = z;}
     void updateListWidget();
+    void setWHValues(QListWidgetItem*);
 
 private:
     Ui::MainWindow *ui;

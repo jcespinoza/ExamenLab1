@@ -35,6 +35,7 @@ void MainWindow::init(){
     connect(ui->spPosy, SIGNAL(valueChanged(int)), this, SLOT(setY(int)));
     connect(ui->spPosz, SIGNAL(valueChanged(int)), this, SLOT(setZ(int)));
     connect(board, SIGNAL(listChanged()), this, SLOT(updateListWidget()));
+    connect(ui->lwObjects, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(setWHValues(QListWidgetItem*)));
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -49,7 +50,7 @@ void MainWindow::on_actionOpen_triggered()
         i->setXYZ(actualX,actualY,actualZ);
         i->setNombre("Imagen Cargada");
         lista->insertar(actualZ, i);
-        board->update();
+        emit board->listChanged();
     }
 }
 
@@ -63,7 +64,22 @@ void MainWindow::on_actionSaveAs_triggered()
 
 void MainWindow::updateListWidget(){
     lista->ir_a_inicio();
-    for(int i = 1; i < lista->getCuantos(); i++){
+    for(int i = 1; i <= lista->getCuantos(); i++){
         Figura * f = lista->recuperar();
+        QString item(f->getNombre() + " ");
+        item.append(QString::number(((Imagen*)f)->getW()) + " x ");
+        item.append(QString::number(((Imagen*)f)->getH()));
+        ui->lwObjects->addItem(item);
     }
+}
+
+void MainWindow::setWHValues(QListWidgetItem * it){
+    int index = ui->lwObjects->currentRow() + 1;
+    qDebug() << "got row + 1: " << index;
+    Imagen* img = (Imagen*)(lista->recuperar(index));
+    qDebug() << "passed casting";
+    ui->spWidth->setValue(img->getW());
+    qDebug() << "Set Width value";
+    ui->spHeight->setValue(img->getH());
+    qDebug() << "Set Height value";
 }
