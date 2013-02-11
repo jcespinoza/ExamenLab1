@@ -27,33 +27,19 @@ private slots:
     void setZ(int z){actualZ = z;}
     void updateListWidget();
     void setWHValues(QListWidgetItem*);
-
     void on_pbUpdate_clicked();
-
     void on_pbFont_clicked();
-
     void on_pbRemove_clicked();
-
     void on_pbAdd_clicked();
-
     void on_actionInsertText_triggered();
-
     void on_actionInsertEyes_triggered();
-
     void on_actionInsertEars_triggered();
-
     void on_actionInsertMouth_triggered();
-
     void on_actionInsertNose_triggered();
-
     void on_actionInsertHair_triggered();
-
     void on_actionClean_triggered();
-
     void on_pbFondo_clicked();
-
     void on_pbColor_clicked();
-
 private:
     Ui::MainWindow *ui;
     PaintBoard * board;
@@ -69,7 +55,6 @@ private:
     Lista* ojos;
     Lista* narices;
     Lista* pelos;
-    Lista* cicatrices;
     Lista* orejas;
 };
 

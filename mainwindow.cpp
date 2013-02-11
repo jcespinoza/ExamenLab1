@@ -27,10 +27,40 @@ void MainWindow::init(){
     board = new PaintBoard();
     lista = new Lista();
     bocas = new Lista();
+    for(int i = 1; i <= 6; i++){
+        QString s(":/mouth/res/zombie/mouth");
+        s.append(QString::number(i)).append(".png");
+        Figura * img = new Imagen(s, 0,0,1, 640,480);
+        bocas->agregar(img);
+    }
     orejas = new Lista();
+    for(int i = 1; i <= 3; i++){
+        QString s(":/ear/res/zombie/ears");
+        s.append(QString::number(i)).append(".png");
+        Figura * img = new Imagen(s, 0,0,1, 640,480);
+        orejas->agregar(img);
+    }
     narices = new Lista();
+    for(int i = 1; i <= 5; i++){
+        QString s(":/nose/res/zombie/nose");
+        s.append(QString::number(i)).append(".png");
+        Figura * img = new Imagen(s, 0,0,1, 640,480);
+        narices->agregar(img);
+    }
     pelos = new Lista();
+    for(int i = 1; i <= 6; i++){
+        QString s(":/hair/res/zombie/hair");
+        s.append(QString::number(i)).append(".png");
+        Figura * img = new Imagen(s, 0,0,1, 640,480);
+        pelos->agregar(img);
+    }
     ojos = new Lista();
+    for(int i = 1; i <= 4; i++){
+        QString s(":/eyes/res/zombie/eyes");
+        s.append(QString::number(i)).append(".png");
+        Figura * img = new Imagen(s, 0,0,1, 640,480);
+        ojos->agregar(img);
+    }
     board->setListaFiguras(lista);
     ui->grid->addWidget(board);
     actualX = actualY = 0;
