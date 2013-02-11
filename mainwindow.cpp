@@ -78,8 +78,10 @@ void MainWindow::init(){
 }
 
 void MainWindow::initColors(){
-    setLBColor(Qt::black, ui->lbColor);
-    setLBColor(Qt::blue, ui->lbFondo);
+    line = Qt::black;
+    fill = Qt::blue;
+    setLBColor(line, ui->lbColor);
+    setLBColor(fill, ui->lbFondo);
 }
 
 void MainWindow::fillList(Lista *list, QListWidget *lw, QString &prefix){
@@ -87,8 +89,10 @@ void MainWindow::fillList(Lista *list, QListWidget *lw, QString &prefix){
     qDebug() << "count is: " << count;
     list->ir_a_inicio();
     for(int i = 1; i <= count; i++){
-        Imagen* img = new Imagen();
+        Imagen* img = new Imagen;
+        qDebug() << img->getPath();
         img = ((Imagen*)list->recuperar());
+        qDebug() << img->getPath();
         QIcon icon(img->getPath());
         QListWidgetItem *ql = new QListWidgetItem(icon, prefix + QString::number(i), 0, 0);
         lw->insertItem(i -  1, ql);
@@ -155,6 +159,8 @@ void MainWindow::setWHValues(QListWidgetItem * it){
         ui->spHeight->setValue(img->getH());
     }else if(tipo == 'T'){
         ui->toolBox->setCurrentWidget(ui->pgText);
+        setLBColor(fig->getColor(), ui->lbColor);
+        setLBColor(fig->getFondo(), ui->lbFondo);
     }
 }
 
@@ -226,10 +232,8 @@ void MainWindow::on_pbAdd_clicked()
 
 void MainWindow::on_actionInsertText_triggered()
 {
-    Texto *t = new Texto(actualX, actualY, actualZ,
-             ui->lbColor->palette().background().color(),
-             ui->lbFondo->palette().background().color(),
-             ui->lbFont->font(),
+    Figura *t = new Texto(actualX, actualY, actualZ,
+             line, fill, ui->lbFont->font(),
              ui->leTexto->text()  );
     t->setNombre("Texto ");
     lista->insertar(actualZ, t);
@@ -291,10 +295,12 @@ void MainWindow::setLBColor(QColor c, QWidget *wid){
 
 void MainWindow::on_pbFondo_clicked()
 {
-    setLBColor(retColor(ui->lbFondo->palette().background().color()), ui->lbFondo);
+    fill = retColor(fill);
+    setLBColor(fill, ui->lbFondo);
 }
 
 void MainWindow::on_pbColor_clicked()
 {
-    setLBColor(retColor(ui->lbColor->palette().background().color()), ui->lbColor);
+    line = retColor(line);
+    setLBColor(line, ui->lbColor);
 }

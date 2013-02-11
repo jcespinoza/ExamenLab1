@@ -47,6 +47,8 @@ private:
     int actualX;
     int actualY;
     int actualZ;
+    QColor line;
+    QColor fill;
     void init();
     void initColors();
     QColor retColor(QColor def);
