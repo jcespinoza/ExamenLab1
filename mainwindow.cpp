@@ -86,16 +86,14 @@ void MainWindow::initColors(){
 
 void MainWindow::fillList(Lista *list, QListWidget *lw, QString &prefix){
     int count = list->getCuantos();
-    qDebug() << "count is: " << count;
     list->ir_a_inicio();
+    Imagen *img;
     for(int i = 1; i <= count; i++){
-        Imagen* img = new Imagen;
-        qDebug() << img->getPath();
-        img = ((Imagen*)list->recuperar());
-        qDebug() << img->getPath();
+        img = ((Imagen*)(list->recuperar()));
         QIcon icon(img->getPath());
         QListWidgetItem *ql = new QListWidgetItem(icon, prefix + QString::number(i), 0, 0);
         lw->insertItem(i -  1, ql);
+        list->siguiente();
     }
 }
 
@@ -138,6 +136,7 @@ void MainWindow::updateListWidget(){
             item.append("\"");
         }
         ui->lwObjects->addItem(item);
+        lista->siguiente();
     }
 }
 
