@@ -51,6 +51,8 @@ private:
     void initColors();
     QColor retColor(QColor def);
     void setLBColor(QColor c, QWidget *wid);
+    void fillList(Lista *, QListWidget *, QString &);
+    void takeFromList(QListWidget* ui, Lista* from, Lista* to, QString prefix);
     Lista* bocas;
     Lista* ojos;
     Lista* narices;

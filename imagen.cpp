@@ -43,3 +43,7 @@ void Imagen::setW(int w){
     if(w > 0)
         wScale = w;
 }
+
+Imagen::~Imagen(){
+
+}

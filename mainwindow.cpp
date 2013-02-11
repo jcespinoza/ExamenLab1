@@ -33,6 +33,7 @@ void MainWindow::init(){
         Figura * img = new Imagen(s, 0,0,1, 640,480);
         bocas->agregar(img);
     }
+    fillList(bocas, ui->lwBocas, QString("Boca"));
     orejas = new Lista();
     for(int i = 1; i <= 3; i++){
         QString s(":/ear/res/zombie/ears");
@@ -40,6 +41,7 @@ void MainWindow::init(){
         Figura * img = new Imagen(s, 0,0,1, 640,480);
         orejas->agregar(img);
     }
+    fillList(orejas, ui->lwOrejas, QString("Orejas"));
     narices = new Lista();
     for(int i = 1; i <= 5; i++){
         QString s(":/nose/res/zombie/nose");
@@ -47,6 +49,7 @@ void MainWindow::init(){
         Figura * img = new Imagen(s, 0,0,1, 640,480);
         narices->agregar(img);
     }
+    fillList(narices, ui->lwNarices, QString("Nariz"));
     pelos = new Lista();
     for(int i = 1; i <= 6; i++){
         QString s(":/hair/res/zombie/hair");
@@ -54,13 +57,15 @@ void MainWindow::init(){
         Figura * img = new Imagen(s, 0,0,1, 640,480);
         pelos->agregar(img);
     }
+    fillList(pelos, ui->lwPelos, QString("Pelo"));
     ojos = new Lista();
     for(int i = 1; i <= 4; i++){
-        QString s(":/eyes/res/zombie/eyes");
+        QString s(":/eye/res/zombie/eyes");
         s.append(QString::number(i)).append(".png");
         Figura * img = new Imagen(s, 0,0,1, 640,480);
         ojos->agregar(img);
     }
+    fillList(ojos, ui->lwOjos, QString("Ojos"));
     board->setListaFiguras(lista);
     ui->grid->addWidget(board);
     actualX = actualY = 0;
@@ -75,6 +80,19 @@ void MainWindow::init(){
 void MainWindow::initColors(){
     setLBColor(Qt::black, ui->lbColor);
     setLBColor(Qt::blue, ui->lbFondo);
+}
+
+void MainWindow::fillList(Lista *list, QListWidget *lw, QString &prefix){
+    int count = list->getCuantos();
+    qDebug() << "count is: " << count;
+    list->ir_a_inicio();
+    for(int i = 1; i <= count; i++){
+        Imagen* img = new Imagen();
+        img = ((Imagen*)list->recuperar());
+        QIcon icon(img->getPath());
+        QListWidgetItem *ql = new QListWidgetItem(icon, prefix + QString::number(i), 0, 0);
+        lw->insertItem(i -  1, ql);
+    }
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -158,6 +176,10 @@ void MainWindow::on_pbUpdate_clicked()
 
     }
     emit board->listChanged();
+    if(lista->recuperar() != 0){
+        ui->lwObjects->item(index - 1)->setSelected(true);
+        ui->lwObjects->setCurrentRow(index - 1);
+    }
 }
 
 void MainWindow::on_pbFont_clicked()
@@ -205,38 +227,49 @@ void MainWindow::on_pbAdd_clicked()
 void MainWindow::on_actionInsertText_triggered()
 {
     Texto *t = new Texto(actualX, actualY, actualZ,
-                         ui->lbColor->palette().background().color(),
-                         ui->lbFondo->palette().background().color(),
-                         ui->lbFont->font(),
-                         ui->leTexto->text());
+             ui->lbColor->palette().background().color(),
+             ui->lbFondo->palette().background().color(),
+             ui->lbFont->font(),
+             ui->leTexto->text()  );
     t->setNombre("Texto ");
     lista->insertar(actualZ, t);
     emit board->listChanged();
 }
 
+void MainWindow::takeFromList(QListWidget * from, Lista * stor, Lista * to, QString nom){
+    int index = from->currentRow();
+    if(index < 0)
+        return;
+    Imagen* imagen = ((Imagen*)stor->recuperar(index + 1));
+    imagen->setXYZ(actualX, actualY, actualZ);
+    imagen->setNombre(nom);
+    to->insertar(actualZ, imagen);
+    emit board->listChanged();
+}
+
 void MainWindow::on_actionInsertEyes_triggered()
 {
-    qDebug() << "InsertEyes-action triggered ";
+    takeFromList(ui->lwOjos, ojos, lista, "Ojos ");
 }
 
 void MainWindow::on_actionInsertEars_triggered()
 {
-    qDebug() << "InsertEars-action triggered ";
+    takeFromList(ui->lwOrejas, orejas, lista, "Orejas ");
 }
 
 void MainWindow::on_actionInsertMouth_triggered()
 {
-    qDebug() << "InsertMouth-action triggered ";
+    takeFromList(ui->lwBocas, bocas, lista, "Boca ");
 }
 
 void MainWindow::on_actionInsertNose_triggered()
 {
-    qDebug() << "InsertNose-action triggered ";
+    takeFromList(ui->lwNarices, narices, lista, "Nariz ");
 }
 
 void MainWindow::on_actionInsertHair_triggered()
 {
-    qDebug() << "InsertHair-action triggered ";
+    takeFromList(ui->lwPelos, pelos, lista, "Pelo ");
 }
 
 void MainWindow::on_actionClean_triggered()
