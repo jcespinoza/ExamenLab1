@@ -47,6 +47,9 @@ private:
     int actualX;
     int actualY;
     int actualZ;
+    int background;
+    int top;
+    int text;
     QColor line;
     QColor fill;
     void init();

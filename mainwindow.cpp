@@ -23,6 +23,9 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::init(){
+    background = 1;
+    top = 2;
+    text = 3;
     initColors();
     board = new PaintBoard();
     lista = new Lista();
@@ -55,13 +58,13 @@ void MainWindow::init(){
     connect(ui->spPosz, SIGNAL(valueChanged(int)), this, SLOT(setZ(int)));
     connect(board, SIGNAL(listChanged()), this, SLOT(updateListWidget()));
     connect(ui->lwObjects, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(setWHValues(QListWidgetItem*)));
+    connect(ui->lwObjects, SIGNAL(itemActivated(QListWidgetItem*)), this, SLOT(setWHValues(QListWidgetItem*)));
 }
 
 void MainWindow::loadImages(QString prefix, Lista *list, int max){
     for(int i = 1; i <= max; i++){
         QString s = QString(prefix);
         s.append(QString::number(i)).append(".png");
-        qDebug() << s;
         Figura * img = new Imagen(s, 0,0,1, 640,480);
         list->agregar(img);
     }
@@ -96,9 +99,9 @@ void MainWindow::on_actionOpen_triggered()
         i = new Imagen();
         QPixmap pix(file);
         i->setImage(pix.scaled(640 - actualX, 480 - actualY, Qt::KeepAspectRatio));
-        i->setXYZ(actualX,actualY,actualZ);
+        i->setXYZ(actualX,actualY,background);
         i->setNombre("Imagen Cargada");
-        lista->insertar(actualZ, i);
+        lista->insertar(background, i);
         emit board->listChanged();
     }
 }
@@ -162,14 +165,22 @@ void MainWindow::on_pbUpdate_clicked()
     int h = ui->spHeight->value();
     Figura *fig = lista->recuperar(index);
     char tipo = fig->tipoFigura();
-    fig->setXYZ(actualX, actualY, actualZ);
+    int zOrder;
     if(tipo == 'I'){
         Imagen* img = (Imagen*)(fig);
         QPixmap current = img->getImage();
+        if(img->getNombre().contains("Imagen Cargada"))
+            zOrder = background;
+        else
+            zOrder = top;
         img->setImage(current.scaled(ui->spWidth->value(), ui->spHeight->value(), Qt::KeepAspectRatio));
     }else if(tipo == 'T'){
-
+        Texto* te = (Texto*)(fig);
+        QString s = ui->leTexto->text();
+        te->setText(s);
+        zOrder = text;
     }
+    fig->setXYZ(actualX, actualY, zOrder);
     emit board->listChanged();
     if(lista->recuperar() != 0){
         ui->lwObjects->item(index - 1)->setSelected(true);
@@ -221,11 +232,11 @@ void MainWindow::on_pbAdd_clicked()
 
 void MainWindow::on_actionInsertText_triggered()
 {
-    Figura *t = new Texto(actualX, actualY, actualZ,
+    Figura *t = new Texto(actualX, actualY, text,
              line, fill, ui->lbFont->font(),
              ui->leTexto->text());
     t->setNombre("Texto ");
-    lista->insertar(actualZ, t);
+    lista->insertar(text, t);
     emit board->listChanged();
 }
 
@@ -234,9 +245,9 @@ void MainWindow::takeFromList(QListWidget * from, Lista * stor, Lista * to, QStr
     if(index < 0)
         return;
     Imagen* imagen = ((Imagen*)stor->recuperar(index + 1));
-    imagen->setXYZ(actualX, actualY, actualZ);
+    imagen->setXYZ(actualX, actualY, top);
     imagen->setNombre(nom);
-    to->insertar(actualZ, imagen);
+    to->insertar(top, imagen);
     emit board->listChanged();
 }
 
