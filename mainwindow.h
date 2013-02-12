@@ -55,6 +55,7 @@ private:
     void setLBColor(QColor c, QWidget *wid);
     void fillList(Lista *, QListWidget *, QString &);
     void takeFromList(QListWidget* ui, Lista* from, Lista* to, QString prefix);
+    void loadImages(QString prefix, Lista *, int max);
     Lista* bocas;
     Lista* ojos;
     Lista* narices;

@@ -27,45 +27,25 @@ void MainWindow::init(){
     board = new PaintBoard();
     lista = new Lista();
     bocas = new Lista();
-    for(int i = 1; i <= 6; i++){
-        QString s(":/mouth/res/zombie/mouth");
-        s.append(QString::number(i)).append(".png");
-        Figura * img = new Imagen(s, 0,0,1, 640,480);
-        bocas->agregar(img);
-    }
+    loadImages(QString(":/mouth/res/zombie/mouth"), bocas, 6);
     fillList(bocas, ui->lwBocas, QString("Boca"));
+
     orejas = new Lista();
-    for(int i = 1; i <= 3; i++){
-        QString s(":/ear/res/zombie/ears");
-        s.append(QString::number(i)).append(".png");
-        Figura * img = new Imagen(s, 0,0,1, 640,480);
-        orejas->agregar(img);
-    }
+    loadImages(":/ear/res/zombie/ears", orejas, 3);
     fillList(orejas, ui->lwOrejas, QString("Orejas"));
+
     narices = new Lista();
-    for(int i = 1; i <= 5; i++){
-        QString s(":/nose/res/zombie/nose");
-        s.append(QString::number(i)).append(".png");
-        Figura * img = new Imagen(s, 0,0,1, 640,480);
-        narices->agregar(img);
-    }
+    loadImages(":/nose/res/zombie/nose", narices, 5);
     fillList(narices, ui->lwNarices, QString("Nariz"));
+
     pelos = new Lista();
-    for(int i = 1; i <= 6; i++){
-        QString s(":/hair/res/zombie/hair");
-        s.append(QString::number(i)).append(".png");
-        Figura * img = new Imagen(s, 0,0,1, 640,480);
-        pelos->agregar(img);
-    }
+    loadImages(":/hair/res/zombie/hair", pelos, 6);
     fillList(pelos, ui->lwPelos, QString("Pelo"));
+
     ojos = new Lista();
-    for(int i = 1; i <= 4; i++){
-        QString s(":/eye/res/zombie/eyes");
-        s.append(QString::number(i)).append(".png");
-        Figura * img = new Imagen(s, 0,0,1, 640,480);
-        ojos->agregar(img);
-    }
+    loadImages(":/eye/res/zombie/eyes", ojos, 4);
     fillList(ojos, ui->lwOjos, QString("Ojos"));
+
     board->setListaFiguras(lista);
     ui->grid->addWidget(board);
     actualX = actualY = 0;
@@ -75,6 +55,16 @@ void MainWindow::init(){
     connect(ui->spPosz, SIGNAL(valueChanged(int)), this, SLOT(setZ(int)));
     connect(board, SIGNAL(listChanged()), this, SLOT(updateListWidget()));
     connect(ui->lwObjects, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(setWHValues(QListWidgetItem*)));
+}
+
+void MainWindow::loadImages(QString prefix, Lista *list, int max){
+    for(int i = 1; i <= max; i++){
+        QString s = QString(prefix);
+        s.append(QString::number(i)).append(".png");
+        qDebug() << s;
+        Figura * img = new Imagen(s, 0,0,1, 640,480);
+        list->agregar(img);
+    }
 }
 
 void MainWindow::initColors(){
@@ -233,7 +223,7 @@ void MainWindow::on_actionInsertText_triggered()
 {
     Figura *t = new Texto(actualX, actualY, actualZ,
              line, fill, ui->lbFont->font(),
-             ui->leTexto->text()  );
+             ui->leTexto->text());
     t->setNombre("Texto ");
     lista->insertar(actualZ, t);
     emit board->listChanged();
