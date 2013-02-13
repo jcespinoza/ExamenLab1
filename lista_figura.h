@@ -28,6 +28,7 @@ public:
     int getCuantos();
     void agregar(Figura *F);
     void limpiar();
+    void semiSort();
     bool vacia();
     void irA(int);
     void insertar(int, Figura *);

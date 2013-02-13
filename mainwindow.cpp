@@ -23,13 +23,14 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::init(){
-    background = 1;
-    top = 2;
-    text = 3;
+
     initColors();
     board = new PaintBoard();
     lista = new Lista();
     bocas = new Lista();
+    background = 1;
+    top = 2;
+    text = 3;
     loadImages(QString(":/mouth/res/zombie/mouth"), bocas, 6);
     fillList(bocas, ui->lwBocas, QString("Boca"));
 
@@ -98,7 +99,7 @@ void MainWindow::on_actionOpen_triggered()
     if(!file.isEmpty()){
         i = new Imagen();
         QPixmap pix(file);
-        i->setImage(pix.scaled(640 - actualX, 480 - actualY, Qt::KeepAspectRatio));
+        i->setImage(pix.scaled(640, 480, Qt::KeepAspectRatio));
         i->setXYZ(actualX,actualY,background);
         i->setNombre("Imagen Cargada");
         lista->insertar(background, i);
@@ -131,6 +132,10 @@ void MainWindow::updateListWidget(){
         ui->lwObjects->addItem(item);
         lista->siguiente();
     }
+    if(lista->getCuantos() <= text)
+        text = 3;
+    else
+        text = lista->getCuantos();
 }
 
 void MainWindow::setWHValues(QListWidgetItem * it){
@@ -178,6 +183,9 @@ void MainWindow::on_pbUpdate_clicked()
         Texto* te = (Texto*)(fig);
         QString s = ui->leTexto->text();
         te->setText(s);
+        te->setFont(ui->lbFont->font());
+        te->setColor(line);
+        te->setFondo(fill);
         zOrder = text;
     }
     fig->setXYZ(actualX, actualY, zOrder);

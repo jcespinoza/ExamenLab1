@@ -105,6 +105,20 @@ void Lista::printList(){
     }
 }
 
+void Lista::semiSort(){
+    ir_a_inicio();
+    Figura*fg = 0;
+    for(int i = 1; i <= cuantos; i++){
+        fg = recuperar();
+        if(fg->tipoFigura() == 'T'){
+            remover(i);
+            break;
+        }
+    }
+    if(fg != 0)
+        agregar(fg);
+}
+
 //Lista es 1-based
 Figura * Lista::remover(int pos){
     Figura * fig = 0;
