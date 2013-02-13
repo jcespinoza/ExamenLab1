@@ -5,10 +5,9 @@ Imagen::Imagen():Figura(){
     wScale=hScale=0;
 }
 
-Imagen::Imagen(QString file, int x=0, int y=0, int z=0, int w=0, int h=0):Figura(x, y, z, Qt::black, Qt::white){
+Imagen::Imagen(QString file, int x=0, int y=0, int z=0):Figura(x, y, z, Qt::black, Qt::white){
     setImage(file);
-    wScale = w;
-    hScale = h;
+
 }
 
 void Imagen::Dibujar(QPainter *painter){
@@ -20,6 +19,8 @@ void Imagen::setImage(QString file){
     if(!file.isEmpty()){
         imagen.load(file);
         imgPath = file;
+        wScale = imagen.width();
+        hScale = imagen.height();
     }
 }
 
@@ -31,7 +32,6 @@ void Imagen::setImage(QPixmap img){
     imagen = img;
     wScale = img.width();
     hScale = img.height();
-    qDebug() << "width" << img.width();
 }
 
 void Imagen::setH(int h){

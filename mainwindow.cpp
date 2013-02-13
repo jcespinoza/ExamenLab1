@@ -42,7 +42,7 @@ void MainWindow::init(){
     fillList(narices, ui->lwNarices, QString("Nariz"));
 
     pelos = new Lista();
-    loadImages(":/hair/res/zombie/hair", pelos, 6);
+    loadImages(":/hair/res/zombie/hair", pelos, 4);
     fillList(pelos, ui->lwPelos, QString("Pelo"));
 
     ojos = new Lista();
@@ -65,7 +65,7 @@ void MainWindow::loadImages(QString prefix, Lista *list, int max){
     for(int i = 1; i <= max; i++){
         QString s = QString(prefix);
         s.append(QString::number(i)).append(".png");
-        Figura * img = new Imagen(s, 0,0,1, 640,480);
+        Figura * img = new Imagen(s, 0,0,1);
         list->agregar(img);
     }
 }
@@ -182,7 +182,7 @@ void MainWindow::on_pbUpdate_clicked()
     }
     fig->setXYZ(actualX, actualY, zOrder);
     emit board->listChanged();
-    if(lista->recuperar() != 0){
+    if(lista->recuperar(index) != 0){
         ui->lwObjects->item(index - 1)->setSelected(true);
         ui->lwObjects->setCurrentRow(index - 1);
     }
